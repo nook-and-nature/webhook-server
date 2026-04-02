@@ -28,19 +28,20 @@ app.post("/webhook", async (req, res) => {
   if (message) {
     const from = message.from;
 
-    await axios.post(
-      "https://graph.facebook.com/v18.0/1111716828684480/messages",
-      {
-        messaging_product: "whatsapp",
-        to: from,
-        text: { body: "Welcome from Nook and Nature" }
-      },
-      {
-      headers: {
-  Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
-  "Content-Type": "application/json"
-      }
-      }
+   await axios.post(
+  "https://graph.facebook.com/v18.0/1111716828684480/messages",
+  {
+    messaging_product: "whatsapp",
+    to: "919527114910",
+    type: "text",  
+    text: { body: "Welcome from Nook and Nature" }
+  },
+  {
+    headers: {
+      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+      "Content-Type": "application/json"
+    }
+  }
     );
   }
 
