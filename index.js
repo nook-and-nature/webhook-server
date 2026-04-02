@@ -36,10 +36,10 @@ app.post("/webhook", async (req, res) => {
         text: { body: "Welcome from Nook and Nature" }
       },
       {
-        headers: {
-          Authorization: "Bearer YOUR_ACCESS_TOKEN",
-          "Content-Type": "application/json"
-        }
+      headers: {
+  Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+  "Content-Type": "application/json"
+      }
       }
     );
   }
