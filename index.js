@@ -17,10 +17,34 @@ app.get("/webhook", (req, res) => {
 });
 
 // Receive messages (POST)
-app.post("/webhook", (req, res) => {
+const axios = require("axios");
+
+app.post("/webhook", async (req, res) => {
   console.log("Webhook data:", JSON.stringify(req.body, null, 2));
+
+  const message =
+    req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+
+  if (message) {
+    const from = message.from;
+
+    await axios.post(
+      "https://graph.facebook.com/v18.0/YOUR_PHONE_NUMBER_ID/messages",
+      {
+        messaging_product: "whatsapp",
+        to: from,
+        text: { body: "Hello from bot 👋" }
+      },
+      {
+        headers: {
+          Authorization: "Bearer YOUR_ACCESS_TOKEN",
+          "Content-Type": "application/json"
+        }
+      }
+    );
+  }
+
   res.sendStatus(200);
 });
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log("Server running"));
