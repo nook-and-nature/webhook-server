@@ -33,7 +33,7 @@ app.post("/webhook", async (req, res) => {
       {
         messaging_product: "whatsapp",
         to: from,
-        text: { body: "Hello from bot 👋" }
+        text: { body: "Welcome from Nook and Nature" }
       },
       {
         headers: {
