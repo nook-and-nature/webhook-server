@@ -32,7 +32,7 @@ app.post("/webhook", async (req, res) => {
   "https://graph.facebook.com/v18.0/1111716828684480/messages",
   {
     messaging_product: "whatsapp",
-    to: "919527114910",
+    to: "+919527114910",
     type: "text",  
     text: { body: "Welcome from Nook and Nature" }
   },
